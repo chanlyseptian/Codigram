@@ -29,7 +29,7 @@ const EditPost = ({ setOpenModal, postId, postImage }) => {
   return (
     <div className="">
       <div className="bg-gray-50  absolute p-8 flex flex-col space-y-4 items-center justify-center text-indigo-400 dark:text-indigo-800 rounded-lg  w-[300px] ml-[-335px] mt-[-355px] md:w-[370px] md:ml-[-450px] lg:ml-[-490px] lg:mt-[-450px]">
-        <div className="absolute text-4xl mt-[-342px] ml-[275px] md:ml-[351px] ">
+        <div className="absolute text-4xl mt-[-322px] ml-[275px] md:ml-[351px] ">
           <button type="button" onClick={() => setOpenModal(false)}>
             <IoCloseCircle />
           </button>

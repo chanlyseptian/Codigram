@@ -43,7 +43,7 @@ const Profile = () => {
     dispatch(getMyProfile());
 
     dispatch(reset());
-    // dispatch(resetPost());
+    dispatch(resetPost());
   }, [user, navigate, dispatch]);
 
   return (
@@ -62,18 +62,41 @@ const Profile = () => {
         <BsGrid3X3 className="text-indigo-900 md:text-xl dark:text-gray-300" />
 
         <div className="grid grid-cols-3 gap-1 md:gap-4 flex-row-reverse items-center justify-center">
-          {myGallery.length !== 0 ? (
+          {/* {myGallery.length !== 0 ? (
             posts.map((post) => {
               const { id, image } = post;
               return <Gallery key={id} gallery={image} imageId={id} />;
             })
           ) : (
-            <div className="flex flex-col text-center  space-y-5 mll-80 text-3xl text-gray-400 ml-[-320]">
-              <MdOutlinePhotoCamera />
-              <h2 className="ml-[-70px]">No Posts Yet</h2>
+            <div className="flex flex-col text-3xl text-gray-400">
+              <div className="flex flex-col absolute z-0">
+                <MdOutlinePhotoCamera />
+                <h2 className="ml-[-70px]">No Posts Yet</h2>
+              </div>
             </div>
-          )
-          }
+          )} */}
+          {isLoading ? (
+            <Loading />
+          ) : posts === null ||
+            myGallery.length === null ||
+            posts === "undefined" ||
+            myGallery.length === "undefined" ? (
+            <Loading />
+          ) : myGallery.length === 0 ? (
+            <div className="flex flex-col text-3xl text-gray-400">
+              <div className="flex flex-col absolute z-0">
+                <MdOutlinePhotoCamera />
+                <h2 className="ml-[-70px]">No Posts Yet</h2>
+              </div>
+            </div>
+          ) : isError ? (
+            <h2 className="ml-[-70px]">Error</h2>
+          ) : (
+            posts.map((post) => {
+              const { id, image } = post;
+              return <Gallery key={id} gallery={image} imageId={id} />;
+            })
+          )}
         </div>
       </div>
     </section>

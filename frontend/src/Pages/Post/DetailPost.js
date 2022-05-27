@@ -12,6 +12,7 @@ import {
 } from "../../features/post/postAction";
 import { resetPost } from "../../features/post/postSlice";
 import Swal from "sweetalert2";
+import {getUserDetail} from '../../features/auth/authAction'
 
 const DetailPost = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,7 +22,6 @@ const DetailPost = () => {
 
   const { User, caption, image, createdAt, userData } = posts;
 
-  // console.log(User.image)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ const DetailPost = () => {
     }
 
     dispatch(detailPost(+id));
+    dispatch(getUserDetail())
     // dispatch(resetPost());
     // dispatch(reset());
   }, [user, navigate, dispatch]);
@@ -115,7 +116,7 @@ const DetailPost = () => {
                     <p className="text-xs text-black">
                       {!createdAt
                         ? "Posted 10 hour ago"
-                        : `${createdAt.substring(14, 19)}`}
+                        : `${createdAt.substring(0,7)}`}
                     </p>
                   </div>
                   <p className="text-black">{caption}</p>

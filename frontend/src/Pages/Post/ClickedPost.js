@@ -72,7 +72,7 @@ const ClickedPost = () => {
                     <p className="text-xs text-black">
                       {!createdAt
                         ? "Posted 10 hour ago"
-                        : `${createdAt.substring(14, 19)}`}
+                        : `${createdAt.substring(0,7)}`}
                     </p>
                   </div>
                   <p className="text-black">{caption}</p>
